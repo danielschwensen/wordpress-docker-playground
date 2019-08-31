@@ -1,0 +1,25 @@
+# A basic Docker Compose file to launch a container for WordPress and a second for MySQL.
+#
+# Launch this with 'docker-compose up'
+# Then connect to http://localhost:8080/ to go through the WordPress installation process.
+
+
+version: "2.0"
+ 
+services:
+ 
+  wordpress:
+    image: wordpress
+    container_name: wordpress_test
+    restart: always
+    ports:
+      - 8080:80
+    environment:
+      WORDPRESS_DB_PASSWORD: root 
+ 
+  mysql:
+    image: mysql:5.7
+    container_name: mysql_test
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
